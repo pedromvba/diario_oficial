@@ -2,11 +2,6 @@
 Program to...
 '''
 
-print(6)
-
-
-
-
 
 
 
