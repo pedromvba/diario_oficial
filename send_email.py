@@ -54,7 +54,7 @@ def send_email(subject, receiver_email, name, due_date, partnership, e_process):
     </body>
     </html>  
         ''',
-        subtype = 'html'
+        subtype='html'
     )
 
     with smtplib.SMTP_SSL(EMAIL_SERVER,PORT) as server:
