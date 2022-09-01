@@ -37,7 +37,7 @@ def send_email(subject, receiver_email, name, due_date, partnership, e_process):
     msg.set_content(
 
         f'''\
-        Saudações {name}, informo que a vigência da Parceria com {partnership}, processo {e_process} terá fim em {due_date}. 
+        Saudações {name}, informo que a vigência da Parceria com {partnership}, processo {e_process}, terá fim em {due_date}. 
         Assim sendo, favor iniciar as tratativas internas para a renovação.     
         '''
     )
@@ -49,7 +49,7 @@ def send_email(subject, receiver_email, name, due_date, partnership, e_process):
         f'''\
     <html>
     <body>
-        <p>Saudações {name}, informo que a vigência da Parceria com <strong>{partnership}</strong>, processo {e_process} terá fim em <strong>{due_date}</strong>.</p>
+        <p>Saudações {name}, informo que a vigência da Parceria com <strong>{partnership}</strong>, processo {e_process}, terá fim em <strong>{due_date}</strong>.</p>
         <p>Assim sendo, favor iniciar as tratativas internas para a renovação.</p>
     </body>
     </html>  
