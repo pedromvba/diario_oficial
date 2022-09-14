@@ -13,8 +13,10 @@ EMAIL_SERVER = 'smtp.gmail.com'
 
 # Loading environmental variables
 
-folder_dir = Path('__file_').resolve().parent # __file = path of this file; .resolve = absolut path;
+folder_dir = Path('__file_').resolve().parent if "_file_" in locals() else Path.cwd()
+                                              # __file = path of this file; .resolve = absolut path;
                                               # .parent = path of the parent folder
+                                              # if "_file_" in locals() else Path.cwd() --- so it will work on Jupyter Notebooks
 
 env_dir = folder_dir/'.env'
 load_dotenv(env_dir)
