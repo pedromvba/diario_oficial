@@ -10,7 +10,7 @@ This project reads names stored in a Excel file and searches for them in the 2nd
 1. [Description](#Description)
 2. [Status](#Status)
 3. [Requirements](#Requirements)
-4. [Adjustments in inlabs-auto-download-xml.py](#Adjustments in inlabs-auto-download-xml.py)
+4. [Adjustments](#Adjustments)
 
 ## Status
 
