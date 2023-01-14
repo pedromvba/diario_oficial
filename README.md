@@ -23,7 +23,9 @@ In development
 3. Acess the github repository https://github.com/Imprensa-Nacional/inlabs/tree/master/public/python
 4. Copy the inlabs-auto-download-xml.py code/file
 
-## Adjustments in inlabs-auto-download-xml.py
+## Adjustments
+
+Upon inlabs-auto-download-xml.py
 
 1. Replace variables login (your login will be an e-mail address) and senha (password) with your login and password created at https://inlabs.in.gov.br/acessar.php
 
