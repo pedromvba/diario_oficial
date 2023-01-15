@@ -44,8 +44,8 @@ def download():
         elif response_arquivo.status_code == 404:
             print("Arquivo não encontrado: %s" % (data_completa + "-" + dou_secao + ".zip"))
     
-    print("Aplicação encerrada")
-    exit(0)
+    # print("Aplicação encerrada")
+    # exit(0)
 
 def login():
     try:

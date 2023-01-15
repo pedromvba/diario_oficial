@@ -59,10 +59,21 @@ response = s.request("POST", url_login, data=payload, headers=headers, verify=Fa
 
 4. Insert if __name__ == "__main__"
 
+This will allow you to import the login function and start a fresh code in main.py
+
 ``` python
 login() # code line 56
 
 if __name__ == "__main__": # code line 56
     login() # codeline 57
 ```
-   
+
+5. Comment Out exit(0)
+
+This will allow the code to continue after you executed the login function
+
+``` python
+exit(0) # code line 48
+# exit(0) # code line 48
+
+```
