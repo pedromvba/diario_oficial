@@ -45,4 +45,5 @@ for xml_file in os.listdir(folder_dir/'extracted'):
 names = pd.read_excel('servidores.xlsx')
 
 
+
 # Delete zip file and the extract folder at the end
