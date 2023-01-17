@@ -6,45 +6,75 @@ import os
 import xml.etree.ElementTree as ET
 import pandas as pd
 
+
+# Defining Functions:
+
+def listdir_nohidden(path):
+    '''
+    List only the "real" files (non system files from a path/directory)
+    :param path: directory absolute path
+    :return: iterable with the non system files from a path
+    '''
+    for f in os.listdir(path):
+        if not f.startswith('.'):
+            yield f
+
+
 # Downloading Files
 login()
 
 # Extracting Files
 
 folder_dir = Path('__file_').resolve().parent if "_file_" in locals() else Path.cwd()
-        # __file = path of this file; .resolve = absolut path;
-        # .parent = path of the parent folder
-        # if "_file_" in locals() else Path.cwd() --- so it will work on Jupyter Notebooks
+# __file = path of this file; .resolve = absolut path;
+# .parent = path of the parent folder
+# if "_file_" in locals() else Path.cwd() --- so it will work on Jupyter Notebooks
 
 for f in os.listdir():  # lists everything in your current directory(default)
     if f[-3:] == 'zip':
         f_name = f
         break
 
-file_path = folder_dir/f_name
+file_path = folder_dir / f_name
 
 with zipfile.ZipFile(file_path, 'r') as zipped:  # Extracting
-    zipped.extractall(folder_dir/'extracted')
+    zipped.extractall(folder_dir / 'extracted')
 
 print('File Extracted')
 
-# Looping Thru Extracted Folder, Parsing the .xml File and Retrieving Information
+# Reading Employees Names on Excel File and Converting them into a List
 
-for xml_file in os.listdir(folder_dir/'extracted'):
+df_names = pd.read_excel('servidores.xlsx')
+names_list = df_names['Nomes'].to_list()
 
-    tree = ET.parse(folder_dir/'extracted'/xml_file)  # Parsing the XML file
+# Looping Through Extracted Folder, Parsing the .xml File and Retrieving Information
+
+dir_files = listdir_nohidden(folder_dir / 'extracted')  # gets all file names into the extracted folder
+# had to use it because a system file (.DS_Store) was bugging
+# the code
+
+
+d = {'nome': [], 'arquivo': [], 'texto': []}  # dictionary to store data and later convert it into a DF
+                                              # and an Output Excel File
+
+
+for xml_file in dir_files:
+
+    tree = ET.parse(folder_dir / 'extracted' / xml_file)  # Parsing the XML file
     root = tree.getroot()  # Creating the root object
-
-    for i, value in enumerate(root):
-        article_data = value.attrib  # this xml has only one child with the article tag and a dictionary as an attribute
 
     text = root[0][0][5].text
 
-# Reading the Excel File and Writing on It
+    for name in names_list:
+        if name.lower() in text.lower():
+            d['nome'].append(name)
+            d['arquivo'].append(xml_file)
+            d['texto'].append(text)
+        else:
+            continue
 
-names = pd.read_excel('servidores.xlsx')
+output_df = pd.DataFrame(data=d)
 
-
-
+output_df.to_excel('registros.xlsx',index = False)
 
 # Delete zip file and the extract folder at the end
