@@ -4,7 +4,7 @@ import requests
 login = "pedromonteirovieira@gmail.com"
 senha = "jYsqex-1caggy-mohkid"
 
-tipo_dou="DO2" # Seções separadas por espaço
+tipo_dou="DO2 DO2E" # Seções separadas por espaço
 # Opções DO1 DO2 DO3 DO1E DO2E DO3E
 
 url_login = "https://inlabs.in.gov.br/logar.php"

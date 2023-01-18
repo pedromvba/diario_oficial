@@ -25,22 +25,27 @@ login()
 
 # Extracting Files
 
-folder_dir = Path('__file_').resolve().parent if "_file_" in locals() else Path.cwd()
+
+directory = 'extracted'
+parent_dir = Path('__file_').resolve().parent if "_file_" in locals() else Path.cwd()
 # __file = path of this file; .resolve = absolut path;
 # .parent = path of the parent folder
 # if "_file_" in locals() else Path.cwd() --- so it will work on Jupyter Notebooks
+path = os.path.join(parent_dir,directory)
+os.mkdir(path) # Creating the folder where the exctacted files will be added
 
-for f in os.listdir():  # lists everything in your current directory(default)
-    if f[-3:] == 'zip':
-        f_name = f
-        break
 
-file_path = folder_dir / f_name
+for zipped_file in os.listdir():
 
-with zipfile.ZipFile(file_path, 'r') as zipped:  # Extracting
-    zipped.extractall(folder_dir / 'extracted')
+    if zipped_file.endswith('.zip'):
 
-print('File Extracted')
+        file_path = f'{parent_dir}/{zipped_file}'
+
+        with zipfile.ZipFile(file_path, 'r') as zipped:  # Extracting
+            zipped.extractall(f'{parent_dir}/extracted')
+
+print('Extraction Ended')
+
 
 # Reading Employees Names on Excel File and Converting them into a List
 
@@ -49,9 +54,9 @@ names_list = df_names['Nomes'].to_list()
 
 # Looping Through Extracted Folder, Parsing the .xml File and Retrieving Information
 
-dir_files = listdir_nohidden(folder_dir / 'extracted')  # gets all file names into the extracted folder
-# had to use it because a system file (.DS_Store) was bugging
-# the code
+dir_files = listdir_nohidden(parent_dir / 'extracted')  # gets all file names into the extracted folder
+                                                        # had to use it because a system file (.DS_Store) was bugging
+                                                        # the code
 
 
 d = {'nome': [], 'arquivo': [], 'texto': []}  # dictionary to store data and later convert it into a DF
@@ -60,7 +65,7 @@ d = {'nome': [], 'arquivo': [], 'texto': []}  # dictionary to store data and lat
 
 for xml_file in dir_files:
 
-    tree = ET.parse(folder_dir / 'extracted' / xml_file)  # Parsing the XML file
+    tree = ET.parse(parent_dir / 'extracted' / xml_file)  # Parsing the XML file
     root = tree.getroot()  # Creating the root object
 
     text = root[0][0][5].text
@@ -76,5 +81,7 @@ for xml_file in dir_files:
 output_df = pd.DataFrame(data=d)
 
 output_df.to_excel('registros.xlsx',index = False)
+
+print('Code Execution Ended')
 
 # Delete zip file and the extract folder at the end
