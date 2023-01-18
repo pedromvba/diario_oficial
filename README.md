@@ -11,10 +11,13 @@ This project reads names stored in a Excel file and searches for them in the 2nd
 2. [Status](#Status)
 3. [Requirements](#Requirements)
 4. [Adjustments](#Adjustments)
+5. [Limitations](#Limitations)
+6. [Step by Step User Guide](#step-by-step-user-guide)
+7. [Contact](#Contact)
 
 ## Status
 
-In development
+Finished
 
 ## Requirements
 
@@ -38,7 +41,6 @@ senha = "password created" # code line 5
 ```
 
 2. Select the section of the DOU you want to search
-
 
 ```python
 tipo_dou="D01 D02 D03 D01E DO2E DO3E"  # code line 7
@@ -78,6 +80,26 @@ exit(0) # code line 48
 
 ```
 
-## Challenges Found
-
 ## Limitations
+
+* Works only for the actual day. It does not check Diario Oficial files from other dates
+* Employees Names have to be on an excel file named "servidores.xlsx" with the column name as "Nomes"
+* Code does not check for names written wrong or without the proper accentuation
+* All files must be on the same directory where the python code will be executed
+* After running, yout have to manually delete the extracted folder. It could be done automatically, however keeping the 
+folder allow you to double check the information.
+
+## Step by Step User Guide
+
+1. Follow the [Requirements](#Requirements)
+2. Make the [Adjustments](#Adjustments) in the inlabs_auto_download_xml.py or download the one from this repository 
+which is already adjusted.
+3. Store the adjusted "inlabs_auto_download_xml.py" and the "servidores.xlsx" files with the employees names into the 
+same folder as the python files.
+4. Run the code
+5. After running, delete the extracted folder so the files from the next execution will not be mixed with the 
+previous ones.
+
+## Contact
+
+For further instructions or contributions, please send an e-mail to pedro.dataanalysis@gmail.com
