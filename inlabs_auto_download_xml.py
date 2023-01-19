@@ -1,8 +1,9 @@
 from datetime import date
 import requests
 
-login = "pedromonteirovieira@gmail.com"
-senha = "jYsqex-1caggy-mohkid"
+login = '' # Insert your login here
+senha = '' # Insert your password here
+
 
 tipo_dou="DO2 DO2E" # Seções separadas por espaço
 # Opções DO1 DO2 DO3 DO1E DO2E DO3E

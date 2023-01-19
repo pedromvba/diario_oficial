@@ -30,7 +30,8 @@ Finished
 
 Upon inlabs-auto-download-xml.py
 
-1. Replace variables login (your login will be an e-mail address) and senha (password) with your login and password created at https://inlabs.in.gov.br/acessar.php
+1. Replace variables login (your login will be an e-mail address) and senha (password) with your login and password 
+created at https://inlabs.in.gov.br/acessar.php
 
 ```python
 login = "email@dominio.com" # code line 4
