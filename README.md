@@ -84,17 +84,18 @@ exit(0) # code line 48
 ## Limitations
 
 * Works only for the actual day. It does not check Diario Oficial files from other dates
-* Employees Names have to be on an excel file named "servidores.xlsx" with the column name as "Nomes"
+* Employees names have to be on an excel file named "servidores.xlsx" with the column name as "Nomes"
 * Code does not check for names written wrong or without the proper accentuation
 * All files must be on the same directory where the python code will be executed
-* After running, yout have to manually delete the extracted folder. It could be done automatically, however keeping the 
-folder allow you to double check the information.
+* After running, you have to manually delete the extracted folder. It could be done automatically, however keeping the 
+folder allow you to double-check the information.
 
 ## Step by Step User Guide
 
 1. Follow the [Requirements](#Requirements)
 2. Make the [Adjustments](#Adjustments) in the inlabs_auto_download_xml.py or download the one from this repository 
-which is already adjusted.
+which is already adjusted. If you download the one from this repository, remember to insert your login and password
+credentials in inlabs_auto_download_xml.py, code lines 4 and 5.
 3. Store the adjusted "inlabs_auto_download_xml.py" and the "servidores.xlsx" files with the employees names into the 
 same folder as the python files.
 4. Run the code
